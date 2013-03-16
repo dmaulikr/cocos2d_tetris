@@ -8,6 +8,7 @@
 
 #import "Game.h"
 #import "Piece.h"
+#import "CCLayer.h"
 
 @implementation Game
 // Helper class method that creates a Scene.
@@ -26,14 +27,30 @@
 	return scene;
 }
 
+#pragma mark - Layer Init
+-(void) initScoreLayer {
+	[self setScoreLayer:[[CCLayerColor alloc] initWithColor:ccc4(0,255,0,255) width:120 height:240]];
+	[self.scoreLayer setPosition:CGPointMake(200, 240)];
+	[self addChild:self.scoreLayer];
+}
+- (void) initNextLayer {
+	[self setNextLayer:[[CCLayerColor alloc] initWithColor:ccc4(255, 0, 0, 255) width:120 height:240]];
+	[self.nextLayer setPosition:CGPointMake(200, 0)];
+	[self addChild:self.nextLayer];
+}
+- (void)initBoardLayer {
+	[self setBoardLayer:[[CCLayerColor alloc] initWithColor:ccc4(0, 0, 255, 255) width:200 height:400]];
+	[self.boardLayer setPosition:CGPointMake(0, 0)];
+	[self addChild:self.boardLayer];
+}
+
 -(id) init {
 	if ((self=[super init])) {
-		CGSize winSize = [[CCDirector sharedDirector] winSize];
-		for (int i = 0; i < PIECE_MAX; i++) {
-			Piece *p = [[Piece alloc] initPieceOfType:i];
-			[p setPosition:CGPointMake(winSize.width / 2, 40 * i + 40)];
-			[self addChild:p];
-		}
+		// init each layer
+		[self initBoardLayer];
+		[self initScoreLayer];
+		[self initNextLayer];
+		
 	}
 	return self;
 }
