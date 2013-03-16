@@ -1,4 +1,4 @@
-./tetris.xcodeproj/project.xcworkspace/xcuserdata/*
+xcuserdata/
 .DS_Store
-./Build/*
-
+Build/
+*.swp
