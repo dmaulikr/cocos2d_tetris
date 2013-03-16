@@ -1,2 +1,4 @@
-./tetris.xcodeproj/project.xcworkspace/xcuserdata/steg132.xcuserdatad/UserInterfaceState.xcuserstate
+./tetris.xcodeproj/project.xcworkspace/xcuserdata/*
 .DS_Store
+./Build/*
+
