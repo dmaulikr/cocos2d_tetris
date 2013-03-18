@@ -30,10 +30,8 @@ const int BLOCK_SIZE = 20;
 				sprites[1].position = CGPointMake( BLOCK_SIZE / -2 , BLOCK_SIZE / -2);
 				sprites[2].position = CGPointMake( BLOCK_SIZE / 2 , BLOCK_SIZE / -2);
 				sprites[3].position = CGPointMake( BLOCK_SIZE + BLOCK_SIZE / 2 , BLOCK_SIZE / -2);
-				sprites[0].color = ccc3(0, 255, 255);
-				sprites[1].color = ccc3(0, 255, 255);
-				sprites[2].color = ccc3(0, 255, 255);
-				sprites[3].color = ccc3(0, 255, 255);
+				for ( int i=0; i<4; i++)
+					sprites[i].color = P_I_COLOR;
 				break;
 			case P_O:
 				// --
@@ -42,10 +40,8 @@ const int BLOCK_SIZE = 20;
 				sprites[1].position = CGPointMake( BLOCK_SIZE / -2 , BLOCK_SIZE / 2);
 				sprites[2].position = CGPointMake( BLOCK_SIZE / 2 , BLOCK_SIZE / -2);
 				sprites[3].position = CGPointMake( BLOCK_SIZE / -2 , BLOCK_SIZE / -2);
-				sprites[0].color = ccc3(255, 255, 0);
-				sprites[1].color = ccc3(255, 255, 0);
-				sprites[2].color = ccc3(255, 255, 0);
-				sprites[3].color = ccc3(255, 255, 0);
+				for ( int i=0; i<4; i++)
+					sprites[i].color = P_O_COLOR;
 				break;
 			case P_T:
 				//  -
@@ -54,10 +50,8 @@ const int BLOCK_SIZE = 20;
 				sprites[1].position = CGPointMake( BLOCK_SIZE / -2 , BLOCK_SIZE / -2);
 				sprites[2].position = CGPointMake( BLOCK_SIZE / 2 , BLOCK_SIZE / -2);
 				sprites[3].position = CGPointMake( BLOCK_SIZE + BLOCK_SIZE / 2 , BLOCK_SIZE / -2);
-				sprites[0].color = ccc3(255, 0, 255);
-				sprites[1].color = ccc3(255, 0, 255);
-				sprites[2].color = ccc3(255, 0, 255);
-				sprites[3].color = ccc3(255, 0, 255);
+				for ( int i=0; i<4; i++)
+					sprites[i].color = P_T_COLOR;
 				break;
 			case P_S:
 				//  --
@@ -66,10 +60,8 @@ const int BLOCK_SIZE = 20;
 				sprites[1].position = CGPointMake( BLOCK_SIZE + BLOCK_SIZE / 2 , BLOCK_SIZE / 2);
 				sprites[2].position = CGPointMake( BLOCK_SIZE / -2 , BLOCK_SIZE / -2);
 				sprites[3].position = CGPointMake( BLOCK_SIZE + BLOCK_SIZE / -2 , BLOCK_SIZE / -2);
-				sprites[0].color = ccc3(0, 255, 0);
-				sprites[1].color = ccc3(0, 255, 0);
-				sprites[2].color = ccc3(0, 255, 0);
-				sprites[3].color = ccc3(0, 255, 0);
+				for ( int i=0; i<4; i++)
+					sprites[i].color = P_S_COLOR;
 				break;
 			case P_Z:
 				// --
@@ -78,10 +70,8 @@ const int BLOCK_SIZE = 20;
 				sprites[1].position = CGPointMake( BLOCK_SIZE + BLOCK_SIZE / 2 , BLOCK_SIZE / -2);
 				sprites[2].position = CGPointMake( BLOCK_SIZE / -2 , BLOCK_SIZE / 2);
 				sprites[3].position = CGPointMake( BLOCK_SIZE + BLOCK_SIZE / -2 , BLOCK_SIZE / 2);
-				sprites[0].color = ccc3(255, 0, 0);
-				sprites[1].color = ccc3(255, 0, 0);
-				sprites[2].color = ccc3(255, 0, 0);
-				sprites[3].color = ccc3(255, 0, 0);
+				for ( int i=0; i<4; i++)
+					sprites[i].color = P_Z_COLOR;
 				break;
 			case P_J:
 				// -
@@ -90,10 +80,8 @@ const int BLOCK_SIZE = 20;
 				sprites[1].position = CGPointMake( BLOCK_SIZE / -2, BLOCK_SIZE / -2);
 				sprites[2].position = CGPointMake( BLOCK_SIZE / 2, BLOCK_SIZE / -2);
 				sprites[3].position = CGPointMake( BLOCK_SIZE + BLOCK_SIZE / 2 , BLOCK_SIZE / -2);
-				sprites[0].color = ccc3(0, 0, 255);
-				sprites[1].color = ccc3(0, 0, 255);
-				sprites[2].color = ccc3(0, 0, 255);
-				sprites[3].color = ccc3(0, 0, 255);
+				for ( int i=0; i<4; i++)
+					sprites[i].color = P_J_COLOR;
 				break;
 			case P_L:
 				//   -
@@ -102,10 +90,8 @@ const int BLOCK_SIZE = 20;
 				sprites[1].position = CGPointMake( BLOCK_SIZE / -2, BLOCK_SIZE / -2);
 				sprites[2].position = CGPointMake( BLOCK_SIZE / 2, BLOCK_SIZE / -2);
 				sprites[3].position = CGPointMake( BLOCK_SIZE + BLOCK_SIZE / 2, BLOCK_SIZE / -2);
-				sprites[0].color = ccc3(255, 127, 0);
-				sprites[1].color = ccc3(255, 127, 0);
-				sprites[2].color = ccc3(255, 127, 0);
-				sprites[3].color = ccc3(255, 127, 0);
+				for ( int i=0; i<4; i++)
+					sprites[i].color = P_L_COLOR;
 				break;
 			case PIECE_MAX:
 				// do nothing
@@ -118,4 +104,26 @@ const int BLOCK_SIZE = 20;
 	return [self initPieceOfType:rand()%PIECE_MAX];
 }
 
+
++(ccColor3B) PieceColor:(PIECE_TYPE)pieceType {
+	switch (pieceType) {
+		case P_I:
+			return P_I_COLOR;
+		case P_O:
+			return P_O_COLOR;
+		case P_T:
+			return P_T_COLOR;
+		case P_S:
+			return P_S_COLOR;
+		case P_Z:
+			return P_Z_COLOR;
+		case P_J:
+			return P_J_COLOR;
+		case P_L:
+			return P_L_COLOR;
+		case PIECE_MAX:
+			return ccc3(0, 0, 0);
+	}
+	return ccc3(0, 0, 0);
+}
 @end
